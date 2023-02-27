@@ -22,6 +22,26 @@
 			"sid": 294113831330972
 		},
 		{
+			"eventType": "variable",
+			"name": "Happiness",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "The happiness level of the player",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 252239116245541
+		},
+		{
+			"eventType": "variable",
+			"name": "Money",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "The amount of money the player has",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 940033311674114
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -35,11 +55,20 @@
 			],
 			"actions": [
 				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 398319451542906,
+					"parameters": {
+						"variable": "Happiness",
+						"value": "10"
+					}
+				},
+				{
 					"id": "set-text",
 					"objectClass": "Debug_Logger",
-					"sid": 831574703172733,
+					"sid": 159748149197899,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with money\""
+						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Happiness"
 					}
 				}
 			],
@@ -59,11 +88,20 @@
 			],
 			"actions": [
 				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 364066770707716,
+					"parameters": {
+						"variable": "Money",
+						"value": "5"
+					}
+				},
+				{
 					"id": "set-text",
 					"objectClass": "Debug_Logger",
-					"sid": 774572784984121,
+					"sid": 721827121259188,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with happiness\""
+						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Money"
 					}
 				}
 			],
@@ -132,6 +170,19 @@
 						"create-hierarchy": false,
 						"template-name": "\"MoneyCollisionHandler \" & ObjectsSpawnedCounter"
 					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 982587533005812,
+					"parameters": {
+						"object-to-create": "Edge_Guider",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "HappinessCollisionHandler.Y - 175",
+						"create-hierarchy": false,
+						"template-name": "\"MoneyCollisionHandler \" & ObjectsSpawnedCounter"
+					}
 				}
 			],
 			"sid": 396654856449598
@@ -172,6 +223,19 @@
 					"sid": 498089030944778,
 					"parameters": {
 						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 269114071057470,
+					"parameters": {
+						"object-to-create": "Decision_Blocker",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "MoneyCollisionHandler.Y + 75",
+						"create-hierarchy": false,
+						"template-name": "\"MoneyCollisionHandler \" & ObjectsSpawnedCounter"
 					}
 				}
 			],
@@ -217,6 +281,39 @@
 				}
 			],
 			"sid": 561540492103373
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Edge_Guider",
+					"sid": 356223969622053
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-position",
+					"objectClass": "Edge_Guider",
+					"sid": 643512980562970,
+					"behaviorType": "MoveTo",
+					"parameters": {
+						"x": "50",
+						"y": "Edge_Guider.Y",
+						"mode": "direct"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 748924115135750,
+					"parameters": {
+						"variable": "ObjectsSpawnedCounter",
+						"value": "ObjectsSpawnedCounter + 1"
+					}
+				}
+			],
+			"sid": 817461516243568
 		},
 		{
 			"eventType": "block",
@@ -280,7 +377,7 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 967387716146251,
+					"sid": 673944237982776,
 					"parameters": {
 						"object-to-create": "HappinessCollisionHandler",
 						"layer": "0",

@@ -63,7 +63,8 @@
 			"Decision_Blocker",
 			"MoneyCollisionHandler",
 			"Debug_Logger",
-			"HappinessCollisionHandler"
+			"HappinessCollisionHandler",
+			"Edge_Guider"
 		],
 		"subfolders": []
 	},
