@@ -12,6 +12,16 @@
 			"sid": 882193246861912
 		},
 		{
+			"eventType": "variable",
+			"name": "HappinessSpawnTimer",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "How long until this object respawns",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 294113831330972
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -83,10 +93,44 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 115605099349341,
+					"sid": 715525264213197,
 					"parameters": {
 						"variable": "ObjectsSpawnedCounter",
 						"value": "ObjectsSpawnedCounter + 1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 726213997950130,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 195023027566975,
+					"parameters": {
+						"object-to-create": "MoneyCollisionHandler",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "HappinessCollisionHandler.Y + 150",
+						"create-hierarchy": false,
+						"template-name": "\"MoneyCollisionHandler \" & ObjectsSpawnedCounter"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 701935536074985,
+					"parameters": {
+						"object-to-create": "Decision_Blocker",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "HappinessCollisionHandler.Y + 75",
+						"create-hierarchy": false,
+						"template-name": "\"MoneyCollisionHandler \" & ObjectsSpawnedCounter"
 					}
 				}
 			],
@@ -121,6 +165,14 @@
 						"variable": "ObjectsSpawnedCounter",
 						"value": "ObjectsSpawnedCounter + 1"
 					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 498089030944778,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
+					}
 				}
 			],
 			"sid": 417046029204597
@@ -154,6 +206,14 @@
 						"variable": "ObjectsSpawnedCounter",
 						"value": "ObjectsSpawnedCounter + 1"
 					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 456671582963002,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
+					}
 				}
 			],
 			"sid": 561540492103373
@@ -169,20 +229,108 @@
 			],
 			"actions": [
 				{
-					"id": "create-object",
+					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 454633832138630,
+					"sid": 635104856484025,
 					"parameters": {
-						"object-to-create": "HappinessCollisionHandler",
-						"layer": "0",
-						"x": "LayoutWidth",
-						"y": "random(0, LayoutHeight)",
-						"create-hierarchy": false,
-						"template-name": "\"HappinessCollisionCollider \" & ObjectsSpawnedCounter"
+						"variable": "HappinessSpawnTimer",
+						"value": "random(0.5, 2.5) * 60"
 					}
 				}
 			],
 			"sid": 751343307584854
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-destroyed",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 328915934791224
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 674633437921461,
+					"parameters": {
+						"variable": "HappinessSpawnTimer",
+						"value": "random(0.5, 1.0) * 60"
+					}
+				}
+			],
+			"sid": 676827308415062
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 194031971758304,
+					"parameters": {
+						"first-value": "HappinessSpawnTimer",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 967387716146251,
+					"parameters": {
+						"object-to-create": "HappinessCollisionHandler",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "random(50,LayoutHeight - 150)",
+						"create-hierarchy": false,
+						"template-name": "\"HappinessCollisionHandler \" & ObjectsSpawnedCounter"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 485605996063002,
+					"parameters": {
+						"variable": "HappinessSpawnTimer",
+						"value": "10000000000"
+					}
+				}
+			],
+			"sid": 628193519545050
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 636211399703099
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 204479406845581,
+					"parameters": {
+						"variable": "HappinessSpawnTimer",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-x",
+					"objectClass": "Player",
+					"sid": 792776515315257,
+					"parameters": {
+						"x": "160"
+					}
+				}
+			],
+			"sid": 893081342798780
 		}
 	],
 	"sid": 744209914689337
