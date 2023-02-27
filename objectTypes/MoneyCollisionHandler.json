@@ -1,0 +1,51 @@
+{
+	"name": "MoneyCollisionHandler",
+	"plugin-id": "Sprite",
+	"sid": 821195124554693,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "GiveMoney",
+			"type": "boolean",
+			"desc": "Whether or not to do a give money action",
+			"show": true,
+			"sid": 711730657922633
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "MoveTo",
+			"name": "MoveTo",
+			"sid": 748221054266031
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 324568,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 609019109147050,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,60 @@
+{
+	"name": "Decision_Blocker",
+	"plugin-id": "Sprite",
+	"sid": 451169494429602,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 299148434765831
+		},
+		{
+			"behaviorId": "MoveTo",
+			"name": "MoveTo",
+			"sid": 625197875394227
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.48,
+						"originY": 0.48,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9930066,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.5195000000000001,
+								1,
+								0.52,
+								1,
+								0.44,
+								0.0005000000000000104,
+								0.44049999999999995
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 292742820947716,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

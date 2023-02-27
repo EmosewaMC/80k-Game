@@ -1,5 +1,189 @@
 {
 	"name": "Event sheet 1",
-	"events": [],
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "ObjectsSpawnedCounter",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "The number of objects spawned",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 882193246861912
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 132394075923179,
+					"parameters": {
+						"object": "MoneyCollisionHandler"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 831574703172733,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Collided with money\""
+					}
+				}
+			],
+			"sid": 146492768252564
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 260094924221352,
+					"parameters": {
+						"object": "HappinessCollisionHandler"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 774572784984121,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Collided with happiness\""
+					}
+				}
+			],
+			"sid": 551498908334124
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 213776945901664
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-position",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 787127568089000,
+					"behaviorType": "MoveTo",
+					"parameters": {
+						"x": "-1000",
+						"y": "HappinessCollisionHandler.Y",
+						"mode": "direct"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 115605099349341,
+					"parameters": {
+						"variable": "ObjectsSpawnedCounter",
+						"value": "ObjectsSpawnedCounter + 1"
+					}
+				}
+			],
+			"sid": 396654856449598
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "MoneyCollisionHandler",
+					"sid": 103353360011867
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-position",
+					"objectClass": "MoneyCollisionHandler",
+					"sid": 850162854264046,
+					"behaviorType": "MoveTo",
+					"parameters": {
+						"x": "-1000",
+						"y": "MoneyCollisionHandler.Y",
+						"mode": "direct"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 757170974070552,
+					"parameters": {
+						"variable": "ObjectsSpawnedCounter",
+						"value": "ObjectsSpawnedCounter + 1"
+					}
+				}
+			],
+			"sid": 417046029204597
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Decision_Blocker",
+					"sid": 660905335816306
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-position",
+					"objectClass": "Decision_Blocker",
+					"sid": 482763483698310,
+					"behaviorType": "MoveTo",
+					"parameters": {
+						"x": "-1000",
+						"y": "Decision_Blocker.Y",
+						"mode": "direct"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 513497500995145,
+					"parameters": {
+						"variable": "ObjectsSpawnedCounter",
+						"value": "ObjectsSpawnedCounter + 1"
+					}
+				}
+			],
+			"sid": 561540492103373
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 627598327376582
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 454633832138630,
+					"parameters": {
+						"object-to-create": "HappinessCollisionHandler",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "random(0, LayoutHeight)",
+						"create-hierarchy": false,
+						"template-name": "\"HappinessCollisionCollider \" & ObjectsSpawnedCounter"
+					}
+				}
+			],
+			"sid": 751343307584854
+		}
+	],
 	"sid": 744209914689337
 }
