@@ -64,7 +64,8 @@
 			"MoneyCollisionHandler",
 			"Debug_Logger",
 			"HappinessCollisionHandler",
-			"Edge_Guider"
+			"Edge_Guider",
+			"RandomEvent1"
 		],
 		"subfolders": []
 	},

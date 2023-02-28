@@ -3,7 +3,15 @@
 	"plugin-id": "Text",
 	"sid": 420241812318808,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "LinesPrinted",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 280018689734885
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": []
 }

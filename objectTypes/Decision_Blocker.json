@@ -14,6 +14,11 @@
 			"behaviorId": "MoveTo",
 			"name": "MoveTo",
 			"sid": 625197875394227
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 390252527447492
 		}
 	],
 	"effectTypes": [],

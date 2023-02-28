@@ -9,6 +9,16 @@
 			"behaviorId": "MoveTo",
 			"name": "MoveTo",
 			"sid": 198826594859070
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 782122166573460
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 581857174227441
 		}
 	],
 	"effectTypes": [],
@@ -24,14 +34,14 @@
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 7907041,
+						"imageSpriteId": 5459037,
 						"collisionPoly": {
 							"points": [
+								1,
+								1,
 								0,
 								1,
 								0,
-								0,
-								1,
 								0
 							]
 						},

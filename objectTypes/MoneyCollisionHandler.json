@@ -3,20 +3,17 @@
 	"plugin-id": "Sprite",
 	"sid": 821195124554693,
 	"isGlobal": false,
-	"instanceVariables": [
-		{
-			"name": "GiveMoney",
-			"type": "boolean",
-			"desc": "Whether or not to do a give money action",
-			"show": true,
-			"sid": 711730657922633
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "MoveTo",
 			"name": "MoveTo",
 			"sid": 748221054266031
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 836859238787331
 		}
 	],
 	"effectTypes": [],
