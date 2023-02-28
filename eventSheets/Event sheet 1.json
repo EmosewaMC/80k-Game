@@ -52,6 +52,16 @@
 			"sid": 606770771090830
 		},
 		{
+			"eventType": "variable",
+			"name": "AirplaneSpawner",
+			"type": "number",
+			"initialValue": "1800",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 406713621496623
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -458,6 +468,15 @@
 					}
 				},
 				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 835136372145560,
+					"parameters": {
+						"variable": "AirplaneSpawner",
+						"value": "1"
+					}
+				},
+				{
 					"id": "set-x",
 					"objectClass": "Player",
 					"sid": 792776515315257,
@@ -468,9 +487,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "Debug_Logger",
-					"sid": 924598706109425,
+					"sid": 753117292523034,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Timer is \" & RandomTicketSpawner"
+						"text": "Debug_Logger.Text & newline & \"Timer is \" & AirplaneSpawner"
 					}
 				},
 				{
@@ -589,23 +608,6 @@
 						"variable": "ObjectsSpawnedCounter",
 						"value": "ObjectsSpawnedCounter + 1"
 					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 908469150959258,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 939344600990658,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
-					}
 				}
 			],
 			"sid": 108625163390859
@@ -631,6 +633,109 @@
 				}
 			],
 			"sid": 902519705504257
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 703929505977746,
+					"parameters": {
+						"first-value": "AirplaneSpawner",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 895547529602272,
+					"parameters": {
+						"object-to-create": "AirplaneEvent",
+						"layer": "1",
+						"x": "LayoutWidth",
+						"y": "random(0, LayoutHeight)",
+						"create-hierarchy": false,
+						"template-name": "\"RandomEvent1 \" & objectcount"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 620066082767807,
+					"parameters": {
+						"variable": "AirplaneSpawner",
+						"value": "10000000000"
+					}
+				}
+			],
+			"sid": 141597786694358
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "AirplaneEvent",
+					"sid": 415671713329716
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-position",
+					"objectClass": "AirplaneEvent",
+					"sid": 199301490344018,
+					"behaviorType": "MoveTo",
+					"parameters": {
+						"x": "-1000",
+						"y": "AirplaneEvent.Y",
+						"mode": "direct"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 908469150959258,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
+					}
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Debug_Logger",
+					"sid": 939344600990658,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 629649948800318
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-destroyed",
+					"objectClass": "AirplaneEvent",
+					"sid": 820398354966795
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 971492038852968,
+					"parameters": {
+						"variable": "AirplaneSpawner",
+						"value": "30 * 60"
+					}
+				}
+			],
+			"sid": 752760831660762
 		}
 	],
 	"sid": 744209914689337

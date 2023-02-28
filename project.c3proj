@@ -72,7 +72,8 @@
 			"Debug_Logger",
 			"HappinessCollisionHandler",
 			"Edge_Guider",
-			"RandomEvent1"
+			"RandomEvent1",
+			"AirplaneEvent"
 		],
 		"subfolders": []
 	},
