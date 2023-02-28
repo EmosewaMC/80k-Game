@@ -730,41 +730,31 @@
 					"parameters": {
 						"object": "AirplaneEvent"
 					}
-				},
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 180579540273664,
-					"parameters": {
-						"first-value": "Money",
-						"comparison": 5,
-						"second-value": "50"
-					}
 				}
 			],
 			"actions": [
 				{
-					"id": "subtract-from-eventvar",
+					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 801735175766493,
+					"sid": 980995525587253,
 					"parameters": {
-						"variable": "Money",
-						"value": "50"
+						"variable": "Happiness",
+						"value": "Money / 10"
 					}
 				},
 				{
-					"id": "add-to-eventvar",
+					"id": "subtract-from-eventvar",
 					"objectClass": "System",
-					"sid": 399905805597774,
+					"sid": 895447671183025,
 					"parameters": {
-						"variable": "Happiness",
-						"value": "30"
+						"variable": "Money",
+						"value": "Money / 10"
 					}
 				},
 				{
 					"id": "destroy",
 					"objectClass": "AirplaneEvent",
-					"sid": 597921679214234
+					"sid": 748896848906640
 				},
 				{
 					"id": "set-text",
