@@ -35,7 +35,7 @@
 			"eventType": "variable",
 			"name": "Money",
 			"type": "number",
-			"initialValue": "50",
+			"initialValue": "0",
 			"comment": "The amount of money the player has",
 			"isStatic": false,
 			"isConstant": false,
@@ -56,10 +56,20 @@
 			"name": "AirplaneSpawner",
 			"type": "number",
 			"initialValue": "1800",
-			"comment": "",
+			"comment": "Interval between a traveling event spawning",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 406713621496623
+		},
+		{
+			"eventType": "variable",
+			"name": "PartyingEventSpawner",
+			"type": "number",
+			"initialValue": "40",
+			"comment": "Interval between a party event spawning",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 448298412397288
 		},
 		{
 			"eventType": "block",
@@ -154,6 +164,175 @@
 				}
 			],
 			"sid": 551498908334124
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 226005232137599,
+					"parameters": {
+						"object": "AirplaneEvent"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 283258015231138,
+					"parameters": {
+						"variable": "Happiness",
+						"value": "Money / 10"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 352643834721188,
+					"parameters": {
+						"variable": "Money",
+						"value": "Money / 10"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "AirplaneEvent",
+					"sid": 422564605025387
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 125200552423148,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Money"
+					}
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Debug_Logger",
+					"sid": 853658463624172,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 745704521695699
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 562606948850889,
+					"parameters": {
+						"object": "RandomEvent1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 601650615292125,
+					"parameters": {
+						"variable": "Happiness",
+						"value": "20"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "RandomEvent1",
+					"sid": 134534734724662
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 210482272709726,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
+					}
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Debug_Logger",
+					"sid": 664752571208370,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 846557641784200
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 563621248007848,
+					"parameters": {
+						"object": "PartyingEvent"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 722509183360985,
+					"parameters": {
+						"first-value": "Money",
+						"comparison": 5,
+						"second-value": "20"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 791646755799515,
+					"parameters": {
+						"variable": "Happiness",
+						"value": "20"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 554682997322436,
+					"parameters": {
+						"variable": "Money",
+						"value": "20"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "PartyingEvent",
+					"sid": 514932909842417
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 536957239260906,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
+					}
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Debug_Logger",
+					"sid": 452619378336407,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 828971945588565
 		},
 		{
 			"eventType": "block",
@@ -350,232 +529,16 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-start-of-layout",
-					"objectClass": "System",
-					"sid": 627598327376582
-				}
-			],
-			"actions": [
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 635104856484025,
-					"parameters": {
-						"variable": "HappinessSpawnTimer",
-						"value": "random(0.5, 2.5) * 60"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 455554942055468,
-					"parameters": {
-						"variable": "RandomTicketSpawner",
-						"value": "random(5.0, 10.0) * 60"
-					}
-				}
-			],
-			"sid": 751343307584854
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-destroyed",
-					"objectClass": "HappinessCollisionHandler",
-					"sid": 328915934791224
-				}
-			],
-			"actions": [
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 674633437921461,
-					"parameters": {
-						"variable": "HappinessSpawnTimer",
-						"value": "random(0.5, 1.0) * 60"
-					}
-				}
-			],
-			"sid": 676827308415062
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 194031971758304,
-					"parameters": {
-						"first-value": "HappinessSpawnTimer",
-						"comparison": 3,
-						"second-value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 673944237982776,
-					"parameters": {
-						"object-to-create": "HappinessCollisionHandler",
-						"layer": "0",
-						"x": "LayoutWidth",
-						"y": "random(50,LayoutHeight - 150)",
-						"create-hierarchy": false,
-						"template-name": "\"HappinessCollisionHandler \" & ObjectsSpawnedCounter"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 485605996063002,
-					"parameters": {
-						"variable": "HappinessSpawnTimer",
-						"value": "10000000000"
-					}
-				}
-			],
-			"sid": 628193519545050
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 636211399703099
-				}
-			],
-			"actions": [
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 204479406845581,
-					"parameters": {
-						"variable": "HappinessSpawnTimer",
-						"value": "1"
-					}
-				},
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 236404119332555,
-					"parameters": {
-						"variable": "RandomTicketSpawner",
-						"value": "1"
-					}
-				},
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 835136372145560,
-					"parameters": {
-						"variable": "AirplaneSpawner",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-x",
-					"objectClass": "Player",
-					"sid": 792776515315257,
-					"parameters": {
-						"x": "160"
-					}
-				}
-			],
-			"sid": 893081342798780
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Debug_Logger",
-					"sid": 325473365201613,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"comparison": 5,
-						"value": "20"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 666353498821376,
-					"parameters": {
-						"text": "\"Debug: \""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Debug_Logger",
-					"sid": 901448477129437,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "0"
-					}
-				}
-			],
-			"sid": 297105898984818
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 356125465430878,
-					"parameters": {
-						"first-value": "RandomTicketSpawner",
-						"comparison": 3,
-						"second-value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 269551192968224,
-					"parameters": {
-						"object-to-create": "RandomEvent1",
-						"layer": "1",
-						"x": "LayoutWidth",
-						"y": "random(0, LayoutHeight)",
-						"create-hierarchy": false,
-						"template-name": "\"RandomEvent1 \" & objectcount"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 319981567141228,
-					"parameters": {
-						"variable": "RandomTicketSpawner",
-						"value": "10000000000"
-					}
-				}
-			],
-			"sid": 717211703459222
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "on-created",
 					"objectClass": "RandomEvent1",
-					"sid": 189117149733341
+					"sid": 775258195480352
 				}
 			],
 			"actions": [
 				{
 					"id": "move-to-position",
 					"objectClass": "RandomEvent1",
-					"sid": 645104877180460,
+					"sid": 933115347273576,
 					"behaviorType": "MoveTo",
 					"parameters": {
 						"x": "-1000",
@@ -586,76 +549,47 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 640294545022466,
+					"sid": 994973669780894,
 					"parameters": {
 						"variable": "ObjectsSpawnedCounter",
 						"value": "ObjectsSpawnedCounter + 1"
 					}
 				}
 			],
-			"sid": 108625163390859
+			"sid": 185157358718101
 		},
 		{
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-destroyed",
-					"objectClass": "RandomEvent1",
-					"sid": 178482596276584
+					"id": "on-created",
+					"objectClass": "PartyingEvent",
+					"sid": 296043893391713
 				}
 			],
 			"actions": [
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 751816449023286,
+					"id": "move-to-position",
+					"objectClass": "PartyingEvent",
+					"sid": 343001891477939,
+					"behaviorType": "MoveTo",
 					"parameters": {
-						"variable": "RandomTicketSpawner",
-						"value": "random(5.0, 10.0) * 60"
-					}
-				}
-			],
-			"sid": 902519705504257
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 703929505977746,
-					"parameters": {
-						"first-value": "AirplaneSpawner",
-						"comparison": 3,
-						"second-value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 895547529602272,
-					"parameters": {
-						"object-to-create": "AirplaneEvent",
-						"layer": "1",
-						"x": "LayoutWidth",
-						"y": "random(0, LayoutHeight)",
-						"create-hierarchy": false,
-						"template-name": "\"RandomEvent1 \" & objectcount"
+						"x": "-1000",
+						"y": "PartyingEvent.Y",
+						"mode": "direct"
 					}
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 620066082767807,
+					"sid": 337694113990287,
 					"parameters": {
-						"variable": "AirplaneSpawner",
-						"value": "10000000000"
+						"variable": "ObjectsSpawnedCounter",
+						"value": "ObjectsSpawnedCounter + 1"
 					}
 				}
 			],
-			"sid": 141597786694358
+			"sid": 813462566847173
 		},
 		{
 			"eventType": "block",
@@ -663,14 +597,14 @@
 				{
 					"id": "on-created",
 					"objectClass": "AirplaneEvent",
-					"sid": 415671713329716
+					"sid": 145596663875153
 				}
 			],
 			"actions": [
 				{
 					"id": "move-to-position",
 					"objectClass": "AirplaneEvent",
-					"sid": 199301490344018,
+					"sid": 516691417907559,
 					"behaviorType": "MoveTo",
 					"parameters": {
 						"x": "-1000",
@@ -681,7 +615,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "Debug_Logger",
-					"sid": 908469150959258,
+					"sid": 300903650435928,
 					"parameters": {
 						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
 					}
@@ -689,14 +623,14 @@
 				{
 					"id": "add-to-instvar",
 					"objectClass": "Debug_Logger",
-					"sid": 939344600990658,
+					"sid": 791978775572571,
 					"parameters": {
 						"instance-variable": "LinesPrinted",
 						"value": "1"
 					}
 				}
 			],
-			"sid": 629649948800318
+			"sid": 303155929025023
 		},
 		{
 			"eventType": "block",
@@ -724,104 +658,359 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "Player",
-					"sid": 776852637411327,
-					"parameters": {
-						"object": "AirplaneEvent"
-					}
+					"id": "on-destroyed",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 934000648802750
 				}
 			],
 			"actions": [
 				{
-					"id": "add-to-eventvar",
+					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 980995525587253,
+					"sid": 584323931930244,
 					"parameters": {
-						"variable": "Happiness",
-						"value": "Money / 10"
-					}
-				},
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 895447671183025,
-					"parameters": {
-						"variable": "Money",
-						"value": "Money / 10"
-					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "AirplaneEvent",
-					"sid": 748896848906640
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 810334223919966,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Money"
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 138103438772833,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "HappinessSpawnTimer",
+						"value": "random(0.5, 1.0) * 60"
 					}
 				}
 			],
-			"sid": 827300148852436
+			"sid": 266743886750522
 		},
 		{
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "Player",
-					"sid": 318959727980594,
+					"id": "on-destroyed",
+					"objectClass": "RandomEvent1",
+					"sid": 599282606296505
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 762817842179612,
 					"parameters": {
-						"object": "RandomEvent1"
+						"variable": "RandomTicketSpawner",
+						"value": "random(5.0, 10.0) * 60"
+					}
+				}
+			],
+			"sid": 200592335529416
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-destroyed",
+					"objectClass": "PartyingEvent",
+					"sid": 680276768700761
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 972674116030851,
+					"parameters": {
+						"variable": "PartyingEventSpawner",
+						"value": "random(5.0, 15.0) * 60"
+					}
+				}
+			],
+			"sid": 958331269965752
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 113869398560190
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 525263399014817,
+					"parameters": {
+						"variable": "HappinessSpawnTimer",
+						"value": "random(0.5, 2.5) * 60"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 774494279276694,
+					"parameters": {
+						"variable": "RandomTicketSpawner",
+						"value": "random(5.0, 10.0) * 60"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 129832998000747,
+					"parameters": {
+						"variable": "PartyingEventSpawner",
+						"value": "random(5, 15) * 60"
+					}
+				}
+			],
+			"sid": 148108495925167
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 772565219106848,
+					"parameters": {
+						"first-value": "HappinessSpawnTimer",
+						"comparison": 3,
+						"second-value": "0"
 					}
 				}
 			],
 			"actions": [
 				{
-					"id": "add-to-eventvar",
+					"id": "create-object",
 					"objectClass": "System",
-					"sid": 247882117876903,
+					"sid": 524779272292106,
 					"parameters": {
-						"variable": "Happiness",
-						"value": "20"
+						"object-to-create": "HappinessCollisionHandler",
+						"layer": "0",
+						"x": "LayoutWidth",
+						"y": "random(50,LayoutHeight - 150)",
+						"create-hierarchy": false,
+						"template-name": "\"HappinessCollisionHandler \" & ObjectsSpawnedCounter"
 					}
 				},
 				{
-					"id": "destroy",
-					"objectClass": "RandomEvent1",
-					"sid": 735255805738380
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 619493982339734,
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 107450289011513,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 856115925273041,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "HappinessSpawnTimer",
+						"value": "10000000000"
 					}
 				}
 			],
-			"sid": 403111026639911
+			"sid": 763490358266947
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 528320938992545,
+					"parameters": {
+						"first-value": "AirplaneSpawner",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 802920804756469,
+					"parameters": {
+						"object-to-create": "AirplaneEvent",
+						"layer": "1",
+						"x": "LayoutWidth",
+						"y": "random(0, LayoutHeight)",
+						"create-hierarchy": false,
+						"template-name": "\"RandomEvent1 \" & objectcount"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 970445298159726,
+					"parameters": {
+						"variable": "AirplaneSpawner",
+						"value": "10000000000"
+					}
+				}
+			],
+			"sid": 814109674353778
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 871863968121509,
+					"parameters": {
+						"first-value": "RandomTicketSpawner",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 421090826589465,
+					"parameters": {
+						"object-to-create": "RandomEvent1",
+						"layer": "1",
+						"x": "LayoutWidth",
+						"y": "random(0, LayoutHeight)",
+						"create-hierarchy": false,
+						"template-name": "\"RandomEvent1 \" & objectcount"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 574420684004223,
+					"parameters": {
+						"variable": "RandomTicketSpawner",
+						"value": "10000000000"
+					}
+				}
+			],
+			"sid": 145020612141932
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 873707540596666,
+					"parameters": {
+						"first-value": "PartyingEventSpawner",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 479985428146948,
+					"parameters": {
+						"object-to-create": "PartyingEvent",
+						"layer": "1",
+						"x": "LayoutWidth",
+						"y": "random(0, LayoutHeight)",
+						"create-hierarchy": false,
+						"template-name": "\"RandomEvent1 \" & objectcount"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 863425804174922,
+					"parameters": {
+						"variable": "PartyingEventSpawner",
+						"value": "10000000000"
+					}
+				}
+			],
+			"sid": 498472090488425
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Debug_Logger",
+					"sid": 277705239418887,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"comparison": 5,
+						"value": "20"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 568114990549934,
+					"parameters": {
+						"text": "\"Debug: \""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Debug_Logger",
+					"sid": 853992645635106,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 114322455910571
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 922270260647688
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 616832666171011,
+					"parameters": {
+						"variable": "HappinessSpawnTimer",
+						"value": "1"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 958368239432600,
+					"parameters": {
+						"variable": "RandomTicketSpawner",
+						"value": "1"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 215710518552280,
+					"parameters": {
+						"variable": "AirplaneSpawner",
+						"value": "1"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 422424564289729,
+					"parameters": {
+						"variable": "PartyingEventSpawner",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-x",
+					"objectClass": "Player",
+					"sid": 477962956527954,
+					"parameters": {
+						"x": "160"
+					}
+				}
+			],
+			"sid": 549986922699845
 		}
 	],
 	"sid": 744209914689337

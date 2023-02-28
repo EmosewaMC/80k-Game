@@ -1,0 +1,58 @@
+{
+	"name": "PartyingEvent",
+	"plugin-id": "Sprite",
+	"sid": 695690057398589,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "MoveTo",
+			"name": "MoveTo",
+			"sid": 988452083413942
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 204510940145739
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 541745419452269
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 273967785698816
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 142,
+						"height": 150,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8056561,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 720933888032843,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

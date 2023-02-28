@@ -73,7 +73,8 @@
 			"HappinessCollisionHandler",
 			"Edge_Guider",
 			"RandomEvent1",
-			"AirplaneEvent"
+			"AirplaneEvent",
+			"PartyingEvent"
 		],
 		"subfolders": []
 	},
