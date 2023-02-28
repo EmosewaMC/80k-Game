@@ -89,6 +89,11 @@
 						"instance-variable": "LinesPrinted",
 						"value": "1"
 					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "MoneyCollisionHandler",
+					"sid": 817260997671942
 				}
 			],
 			"sid": 146492768252564
@@ -131,6 +136,11 @@
 						"instance-variable": "LinesPrinted",
 						"value": "1"
 					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 926173561325686
 				}
 			],
 			"sid": 551498908334124
@@ -163,23 +173,6 @@
 					"parameters": {
 						"variable": "ObjectsSpawnedCounter",
 						"value": "ObjectsSpawnedCounter + 1"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 726213997950130,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 920505986573784,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
 					}
 				},
 				{
@@ -263,23 +256,6 @@
 					}
 				},
 				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 498089030944778,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 910411816523281,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
-					}
-				},
-				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 874926856745606,
@@ -322,32 +298,6 @@
 						"x": "-1000",
 						"y": "Decision_Blocker.Y",
 						"mode": "direct"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 513497500995145,
-					"parameters": {
-						"variable": "ObjectsSpawnedCounter",
-						"value": "ObjectsSpawnedCounter + 1"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 456671582963002,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 172490757289704,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
 					}
 				}
 			],
@@ -499,11 +449,37 @@
 					}
 				},
 				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 236404119332555,
+					"parameters": {
+						"variable": "RandomTicketSpawner",
+						"value": "1"
+					}
+				},
+				{
 					"id": "set-x",
 					"objectClass": "Player",
 					"sid": 792776515315257,
 					"parameters": {
 						"x": "160"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Debug_Logger",
+					"sid": 924598706109425,
+					"parameters": {
+						"text": "Debug_Logger.Text & newline & \"Timer is \" & RandomTicketSpawner"
+					}
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Debug_Logger",
+					"sid": 920090199204195,
+					"parameters": {
+						"instance-variable": "LinesPrinted",
+						"value": "1"
 					}
 				}
 			],
@@ -560,14 +536,16 @@
 			],
 			"actions": [
 				{
-					"id": "spawn-another-object",
-					"objectClass": "RandomEvent1",
-					"sid": 617788576462423,
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 269551192968224,
 					"parameters": {
-						"object": "RandomEvent1",
+						"object-to-create": "RandomEvent1",
 						"layer": "1",
-						"image-point": "0",
-						"create-hierarchy": false
+						"x": "LayoutWidth",
+						"y": "random(0, LayoutHeight)",
+						"create-hierarchy": false,
+						"template-name": "\"RandomEvent1 \" & objectcount"
 					}
 				},
 				{
@@ -595,7 +573,7 @@
 				{
 					"id": "move-to-position",
 					"objectClass": "RandomEvent1",
-					"sid": 337687295365833,
+					"sid": 645104877180460,
 					"behaviorType": "MoveTo",
 					"parameters": {
 						"x": "-1000",
@@ -628,17 +606,31 @@
 						"instance-variable": "LinesPrinted",
 						"value": "1"
 					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "RandomEvent1",
-					"sid": 489412758910918,
-					"parameters": {
-						"angle": "random(100, 250)"
-					}
 				}
 			],
 			"sid": 108625163390859
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-destroyed",
+					"objectClass": "RandomEvent1",
+					"sid": 178482596276584
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 751816449023286,
+					"parameters": {
+						"variable": "RandomTicketSpawner",
+						"value": "random(5.0, 10.0) * 60"
+					}
+				}
+			],
+			"sid": 902519705504257
 		}
 	],
 	"sid": 744209914689337

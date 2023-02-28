@@ -14,6 +14,11 @@
 			"behaviorId": "destroy",
 			"name": "DestroyOutsideLayout",
 			"sid": 114604915675095
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 229104577476732
 		}
 	],
 	"effectTypes": [],
