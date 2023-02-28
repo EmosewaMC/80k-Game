@@ -35,7 +35,7 @@
 			"eventType": "variable",
 			"name": "Money",
 			"type": "number",
-			"initialValue": "0",
+			"initialValue": "50",
 			"comment": "The amount of money the player has",
 			"isStatic": false,
 			"isConstant": false,
@@ -75,20 +75,25 @@
 			],
 			"actions": [
 				{
+					"id": "destroy",
+					"objectClass": "MoneyCollisionHandler",
+					"sid": 817260997671942
+				},
+				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 398319451542906,
+					"sid": 364066770707716,
 					"parameters": {
-						"variable": "Happiness",
-						"value": "10"
+						"variable": "Money",
+						"value": "5"
 					}
 				},
 				{
 					"id": "set-text",
 					"objectClass": "Debug_Logger",
-					"sid": 159748149197899,
+					"sid": 840544721930143,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Happiness"
+						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Money"
 					}
 				},
 				{
@@ -99,11 +104,6 @@
 						"instance-variable": "LinesPrinted",
 						"value": "1"
 					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "MoneyCollisionHandler",
-					"sid": 817260997671942
 				}
 			],
 			"sid": 146492768252564
@@ -122,20 +122,25 @@
 			],
 			"actions": [
 				{
+					"id": "destroy",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 926173561325686
+				},
+				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 364066770707716,
+					"sid": 398319451542906,
 					"parameters": {
-						"variable": "Money",
-						"value": "5"
+						"variable": "Happiness",
+						"value": "10"
 					}
 				},
 				{
 					"id": "set-text",
 					"objectClass": "Debug_Logger",
-					"sid": 721827121259188,
+					"sid": 952956638216317,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Money"
+						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
 					}
 				},
 				{
@@ -146,11 +151,6 @@
 						"instance-variable": "LinesPrinted",
 						"value": "1"
 					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "HappinessCollisionHandler",
-					"sid": 926173561325686
 				}
 			],
 			"sid": 551498908334124
@@ -483,23 +483,6 @@
 					"parameters": {
 						"x": "160"
 					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 753117292523034,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Timer is \" & AirplaneSpawner"
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 920090199204195,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
-					}
 				}
 			],
 			"sid": 893081342798780
@@ -736,6 +719,50 @@
 				}
 			],
 			"sid": 752760831660762
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 776852637411327,
+					"parameters": {
+						"object": "AirplaneEvent"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 180579540273664,
+					"parameters": {
+						"first-value": "Money",
+						"comparison": 5,
+						"second-value": "50"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 801735175766493,
+					"parameters": {
+						"variable": "Money",
+						"value": "50"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 399905805597774,
+					"parameters": {
+						"variable": "Happiness",
+						"value": "30"
+					}
+				}
+			],
+			"sid": 827300148852436
 		}
 	],
 	"sid": 744209914689337
