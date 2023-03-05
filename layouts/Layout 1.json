@@ -360,6 +360,49 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "Text",
+					"properties": {
+						"text": "Main player: https://www.innersloth.com/games/among-us/\nMoneybag: https://www.istockphoto.com/portfolio/KalebSilva?mediatype=illustration\nAirplane: https://www.vecteezy.com/members/artvndy\nDisco Globe: https://www.carstickers.com/products/marketplace/artist/shutterstock-derter/\nBench: https://www.freepik.com/author/pixeleart\nBackground: https://www.pexels.com/@gradienta/\nAll other art assets are ours and our own.\nAll Sounds from: https://www.mixkit.co\n",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 36.19999999999992,
+						"line-height": 0,
+						"bold": true,
+						"italic": false,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left",
+						"read-aloud": false
+					},
+					"uid": 13,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 3,
+						"y": -498,
+						"width": 2248,
+						"height": 907,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 723859377941610,

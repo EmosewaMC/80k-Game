@@ -90,7 +90,8 @@
 			"AirplaneEvent",
 			"PartyingEvent",
 			"GlobalSoundEmitter",
-			"TiledBackground"
+			"TiledBackground",
+			"Text"
 		],
 		"subfolders": []
 	},
