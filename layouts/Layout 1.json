@@ -86,8 +86,8 @@
 					"world": {
 						"x": 396,
 						"y": 1373,
-						"width": 100,
-						"height": 100,
+						"width": 200,
+						"height": 200,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -321,6 +321,45 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "TiledBackground",
+					"properties": {
+						"initially-visible": true,
+						"origin": "top-left",
+						"wrap-horizontal": "repeat",
+						"wrap-vertical": "repeat",
+						"image-offset-x": 0,
+						"image-offset-y": 0,
+						"image-scale-x": 1,
+						"image-scale-y": 1,
+						"image-angle": 0,
+						"enable-tile-randomization": false,
+						"x-random": 1,
+						"y-random": 1,
+						"angle-random": 1,
+						"blend-margin-x": 0.1,
+						"blend-margin-y": 0.1
+					},
+					"uid": 12,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 1,
+						"y": 1,
+						"width": 1157,
+						"height": 477,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 723859377941610,
@@ -404,9 +443,9 @@
 					}
 				},
 				{
-					"type": "Debug_Logger",
+					"type": "InGameText",
 					"properties": {
-						"text": "Debug:",
+						"text": "Money: 0\nHappiness: 0",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 12,
@@ -427,14 +466,12 @@
 						"read-aloud": false
 					},
 					"uid": 5,
-					"instanceVariables": {
-						"LinesPrinted": 0
-					},
+					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
 						"x": 0,
 						"y": 1,
-						"width": 225,
+						"width": 579,
 						"height": 478,
 						"originX": 0,
 						"originY": 0,

@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -17,6 +24,13 @@
 			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -69,12 +83,14 @@
 			"Player",
 			"Decision_Blocker",
 			"MoneyCollisionHandler",
-			"Debug_Logger",
+			"InGameText",
 			"HappinessCollisionHandler",
 			"Edge_Guider",
 			"RandomEvent1",
 			"AirplaneEvent",
-			"PartyingEvent"
+			"PartyingEvent",
+			"GlobalSoundEmitter",
+			"TiledBackground"
 		],
 		"subfolders": []
 	},
@@ -102,7 +118,48 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "mixkit-coins-sound-2003.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 133407194433007,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "mixkit-flying-fast-swoosh-1469.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 769991125815289,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "mixkit-a-couple-of-glasses-clink-154.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 887140238700885,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "collectcoin-6075.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 333934732661470,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "string-pluck-ukulele-102744.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 299379416051008,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"music": {

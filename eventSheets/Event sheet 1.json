@@ -72,6 +72,36 @@
 			"sid": 448298412397288
 		},
 		{
+			"eventType": "variable",
+			"name": "SerializeVariables",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "Whether or not to update the on screen variables",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 661459672854558
+		},
+		{
+			"eventType": "variable",
+			"name": "FrameEvents",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The events to log that happened the past 5 ticks",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 305447167497637
+		},
+		{
+			"eventType": "variable",
+			"name": "FlushLog",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Write the log when the time reaches 5",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 335283350664746
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -99,20 +129,33 @@
 					}
 				},
 				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 840544721930143,
+					"id": "play",
+					"objectClass": "GlobalSoundEmitter",
+					"sid": 892174482079554,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Money"
+						"audio-file": "mixkit-coins-sound-2003",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
 					}
 				},
 				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 156066718525196,
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 913766237154697,
 					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "SerializeVariables",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 830415087390718,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "FrameEvents & newline & \"You made some money today\""
 					}
 				}
 			],
@@ -146,20 +189,33 @@
 					}
 				},
 				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 952956638216317,
+					"id": "play",
+					"objectClass": "GlobalSoundEmitter",
+					"sid": 364540807245074,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
+						"audio-file": "string-pluck-ukulele-102744",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
 					}
 				},
 				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 373813820692258,
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 879929015258541,
 					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "SerializeVariables",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 685094468195607,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "FrameEvents & newline & \"You feel a little bit happier\""
 					}
 				}
 			],
@@ -202,20 +258,33 @@
 					"sid": 422564605025387
 				},
 				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 125200552423148,
+					"id": "play",
+					"objectClass": "GlobalSoundEmitter",
+					"sid": 915440364326705,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with mon \" & Money"
+						"audio-file": "mixkit-flying-fast-swoosh-1469",
+						"loop": "not-looping",
+						"volume": "-10",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
 					}
 				},
 				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 853658463624172,
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 127272551118623,
 					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "SerializeVariables",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 301921068139429,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "FrameEvents & newline & \"You took a trip and feel refreshed\""
 					}
 				}
 			],
@@ -249,20 +318,33 @@
 					"sid": 134534734724662
 				},
 				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 210482272709726,
+					"id": "play",
+					"objectClass": "GlobalSoundEmitter",
+					"sid": 218670511830613,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
+						"audio-file": "collectcoin-6075",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
 					}
 				},
 				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 664752571208370,
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 255581501008912,
 					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "SerializeVariables",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 536456913133504,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "FrameEvents & newline & \"You went to the arcade with some friends\""
 					}
 				}
 			],
@@ -315,20 +397,33 @@
 					"sid": 514932909842417
 				},
 				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 536957239260906,
+					"id": "play",
+					"objectClass": "GlobalSoundEmitter",
+					"sid": 897165153909617,
 					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Collided with happy \" & Happiness"
+						"audio-file": "mixkit-a-couple-of-glasses-clink-154",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
 					}
 				},
 				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 452619378336407,
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 556677345012977,
 					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
+						"variable": "SerializeVariables",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 577756115001706,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "FrameEvents & newline & \"A social event with friends is just what you needed\""
 					}
 				}
 			],
@@ -611,23 +706,6 @@
 						"y": "AirplaneEvent.Y",
 						"mode": "direct"
 					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 300903650435928,
-					"parameters": {
-						"text": "Debug_Logger.Text & newline & \"Object \" & ObjectsSpawnedCounter & \" Spawned\""
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Debug_Logger",
-					"sid": 791978775572571,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "1"
-					}
 				}
 			],
 			"sid": 303155929025023
@@ -892,6 +970,16 @@
 						"comparison": 3,
 						"second-value": "0"
 					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 245149489820440,
+					"parameters": {
+						"first-value": "Money",
+						"comparison": 5,
+						"second-value": "20"
+					}
 				}
 			],
 			"actions": [
@@ -919,41 +1007,6 @@
 				}
 			],
 			"sid": 498472090488425
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Debug_Logger",
-					"sid": 277705239418887,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"comparison": 5,
-						"value": "20"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-text",
-					"objectClass": "Debug_Logger",
-					"sid": 568114990549934,
-					"parameters": {
-						"text": "\"Debug: \""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Debug_Logger",
-					"sid": 853992645635106,
-					"parameters": {
-						"instance-variable": "LinesPrinted",
-						"value": "0"
-					}
-				}
-			],
-			"sid": 114322455910571
 		},
 		{
 			"eventType": "block",
@@ -1002,6 +1055,15 @@
 					}
 				},
 				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 309115413718026,
+					"parameters": {
+						"variable": "FlushLog",
+						"value": "1"
+					}
+				},
+				{
 					"id": "set-x",
 					"objectClass": "Player",
 					"sid": 477962956527954,
@@ -1011,6 +1073,67 @@
 				}
 			],
 			"sid": 549986922699845
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 604834525767449,
+					"parameters": {
+						"variable": "SerializeVariables"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 527279873205017,
+					"parameters": {
+						"first-value": "FlushLog",
+						"comparison": 5,
+						"second-value": "60"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "InGameText",
+					"sid": 895072753646439,
+					"parameters": {
+						"text": "\"Money: \" & Money & newline & \"Happiness: \" & Happiness & FrameEvents"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 824093272057324,
+					"parameters": {
+						"variable": "SerializeVariables",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 639256835741634,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 125166941580011,
+					"parameters": {
+						"variable": "FlushLog",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 309853508365535
 		}
 	],
 	"sid": 744209914689337
