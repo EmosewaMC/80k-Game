@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 32702,
+	"savedWithRelease": 32703,
 	"name": "GameFor80K",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -10,6 +10,13 @@
 			"type": "plugin",
 			"id": "Audio",
 			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -91,7 +98,10 @@
 			"PartyingEvent",
 			"GlobalSoundEmitter",
 			"TiledBackground",
-			"Text"
+			"Text",
+			"InGameTimer",
+			"QuickTutorial",
+			"Keyboard"
 		],
 		"subfolders": []
 	},

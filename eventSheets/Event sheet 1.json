@@ -102,6 +102,76 @@
 			"sid": 335283350664746
 		},
 		{
+			"eventType": "variable",
+			"name": "TimeScalar",
+			"type": "number",
+			"initialValue": "3600",
+			"comment": "The amount of ticks that must pass before increasing the games scalar",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 994602790152632
+		},
+		{
+			"eventType": "variable",
+			"name": "gameTime",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "The number of in game ticks that have passed",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 960700309073216
+		},
+		{
+			"eventType": "variable",
+			"name": "costScalar",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "The amount to scale costs by",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 629575130823265
+		},
+		{
+			"eventType": "variable",
+			"name": "earnScalar",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "The amount to scale earnings by",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 660255180835891
+		},
+		{
+			"eventType": "variable",
+			"name": "yearsAlive",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "The number of years the player has experienced",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 956020742258458
+		},
+		{
+			"eventType": "variable",
+			"name": "gameLength",
+			"type": "number",
+			"initialValue": "3",
+			"comment": "The games total length",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 861762106286892
+		},
+		{
+			"eventType": "variable",
+			"name": "isGameRunning",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "True if the game is running",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 623275561132737
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -122,10 +192,10 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 364066770707716,
+					"sid": 301781387673423,
 					"parameters": {
 						"variable": "Money",
-						"value": "5"
+						"value": "5 * earnScalar"
 					}
 				},
 				{
@@ -182,10 +252,10 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 398319451542906,
+					"sid": 450973000901987,
 					"parameters": {
 						"variable": "Happiness",
-						"value": "10"
+						"value": "2.5 * earnScalar"
 					}
 				},
 				{
@@ -231,25 +301,35 @@
 					"parameters": {
 						"object": "AirplaneEvent"
 					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 501135378240207,
+					"parameters": {
+						"first-value": "Money",
+						"comparison": 5,
+						"second-value": "Money * 0.6 * costScalar"
+					}
 				}
 			],
 			"actions": [
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 283258015231138,
+					"sid": 949746488188073,
 					"parameters": {
 						"variable": "Happiness",
-						"value": "Money / 10"
+						"value": "Money / 10 * earnScalar"
 					}
 				},
 				{
 					"id": "subtract-from-eventvar",
 					"objectClass": "System",
-					"sid": 352643834721188,
+					"sid": 731891470929541,
 					"parameters": {
 						"variable": "Money",
-						"value": "Money / 10"
+						"value": "Money *0.6 * costScalar"
 					}
 				},
 				{
@@ -306,10 +386,10 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 601650615292125,
+					"sid": 783626535937755,
 					"parameters": {
 						"variable": "Happiness",
-						"value": "20"
+						"value": "20 * earnScalar"
 					}
 				},
 				{
@@ -341,7 +421,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 536456913133504,
+					"sid": 561558605985156,
 					"parameters": {
 						"variable": "FrameEvents",
 						"value": "FrameEvents & newline & \"You went to the arcade with some friends\""
@@ -364,11 +444,11 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 722509183360985,
+					"sid": 852646038766117,
 					"parameters": {
 						"first-value": "Money",
 						"comparison": 5,
-						"second-value": "20"
+						"second-value": "12 * costScalar"
 					}
 				}
 			],
@@ -376,19 +456,19 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 791646755799515,
+					"sid": 457480309423405,
 					"parameters": {
 						"variable": "Happiness",
-						"value": "20"
+						"value": "12 * earnScalar"
 					}
 				},
 				{
 					"id": "subtract-from-eventvar",
 					"objectClass": "System",
-					"sid": 554682997322436,
+					"sid": 977453833391129,
 					"parameters": {
 						"variable": "Money",
-						"value": "20"
+						"value": "12 * costScalar"
 					}
 				},
 				{
@@ -745,10 +825,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 584323931930244,
+					"sid": 497828798091716,
 					"parameters": {
 						"variable": "HappinessSpawnTimer",
-						"value": "random(0.5, 1.0) * 60"
+						"value": "random(0.5, 1.0) * 60 * costScalar"
 					}
 				}
 			],
@@ -804,7 +884,37 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 113869398560190
+					"sid": 292557652980782
+				}
+			],
+			"actions": [
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 459636314305374,
+					"parameters": {
+						"time-scale": "0"
+					}
+				}
+			],
+			"sid": 625022686554183
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-key-released",
+					"objectClass": "Keyboard",
+					"sid": 913355723696268
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 377030731991338,
+					"parameters": {
+						"variable": "isGameRunning"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [
@@ -833,6 +943,71 @@
 					"parameters": {
 						"variable": "PartyingEventSpawner",
 						"value": "random(5, 15) * 60"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 441423928686810,
+					"parameters": {
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 130485904798057,
+					"parameters": {
+						"variable": "isGameRunning",
+						"value": "true"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "QuickTutorial",
+					"sid": 317202871409903
+				},
+				{
+					"id": "set-y",
+					"objectClass": "Player",
+					"sid": 384651378628863,
+					"parameters": {
+						"y": "LayoutHeight / 2"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "InGameText",
+					"sid": 811532226803660,
+					"parameters": {
+						"text": "\"Money: \" & Money & newline & \"Happiness: \" & Happiness & FrameEvents"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 358589289270359,
+					"parameters": {
+						"variable": "SerializeVariables",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 119397659857616,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 318003626333017,
+					"parameters": {
+						"variable": "FlushLog",
+						"value": "0"
 					}
 				}
 			],
@@ -1015,6 +1190,14 @@
 					"id": "every-tick",
 					"objectClass": "System",
 					"sid": 922270260647688
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 886317818670905,
+					"parameters": {
+						"variable": "isGameRunning"
+					}
 				}
 			],
 			"actions": [
@@ -1064,6 +1247,15 @@
 					}
 				},
 				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 694902737347798,
+					"parameters": {
+						"variable": "gameTime",
+						"value": "1"
+					}
+				},
+				{
 					"id": "set-x",
 					"objectClass": "Player",
 					"sid": 477962956527954,
@@ -1078,9 +1270,81 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 237099890425657,
+					"parameters": {
+						"first-value": "gameTime/TimeScalar",
+						"comparison": 5,
+						"second-value": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 542433212125714,
+					"parameters": {
+						"variable": "gameTime",
+						"value": "0"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 483249874635969,
+					"parameters": {
+						"variable": "costScalar",
+						"value": "0.5"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 800035595925508,
+					"parameters": {
+						"variable": "earnScalar",
+						"value": "1.3"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 257172075460392,
+					"parameters": {
+						"variable": "SerializeVariables",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 532577737606967,
+					"parameters": {
+						"variable": "FrameEvents",
+						"value": "FrameEvents & newline & \"Scalars are now: \" & earnScalar & \" \" & costScalar"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 544923259424203,
+					"parameters": {
+						"variable": "yearsAlive",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 148031075278289
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "compare-boolean-eventvar",
 					"objectClass": "System",
-					"sid": 604834525767449,
+					"sid": 988683666655098,
 					"parameters": {
 						"variable": "SerializeVariables"
 					}
@@ -1088,7 +1352,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 527279873205017,
+					"sid": 988534168583725,
 					"parameters": {
 						"first-value": "FlushLog",
 						"comparison": 5,
@@ -1100,7 +1364,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "InGameText",
-					"sid": 895072753646439,
+					"sid": 733180642511614,
 					"parameters": {
 						"text": "\"Money: \" & Money & newline & \"Happiness: \" & Happiness & FrameEvents"
 					}
@@ -1108,7 +1372,7 @@
 				{
 					"id": "set-boolean-eventvar",
 					"objectClass": "System",
-					"sid": 824093272057324,
+					"sid": 166418610113481,
 					"parameters": {
 						"variable": "SerializeVariables",
 						"value": "false"
@@ -1117,7 +1381,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 639256835741634,
+					"sid": 928785414491759,
 					"parameters": {
 						"variable": "FrameEvents",
 						"value": "\"\""
@@ -1126,14 +1390,151 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 125166941580011,
+					"sid": 354311832252024,
 					"parameters": {
 						"variable": "FlushLog",
 						"value": "0"
 					}
 				}
 			],
-			"sid": 309853508365535
+			"sid": 546977642560451
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 421396648112831,
+					"parameters": {
+						"first-value": "yearsAlive",
+						"comparison": 5,
+						"second-value": "gameLength"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "InGameText",
+					"sid": 566905296558907
+				},
+				{
+					"id": "destroy",
+					"objectClass": "MoneyCollisionHandler",
+					"sid": 547740578189878
+				},
+				{
+					"id": "destroy",
+					"objectClass": "HappinessCollisionHandler",
+					"sid": 789186071514865
+				},
+				{
+					"id": "destroy",
+					"objectClass": "AirplaneEvent",
+					"sid": 792042377566808
+				},
+				{
+					"id": "destroy",
+					"objectClass": "RandomEvent1",
+					"sid": 459719264812381
+				},
+				{
+					"id": "destroy",
+					"objectClass": "PartyingEvent",
+					"sid": 981275585935197
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Player",
+					"sid": 122507332175083
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Edge_Guider",
+					"sid": 391070235416592
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Decision_Blocker",
+					"sid": 173397679354177
+				},
+				{
+					"id": "destroy",
+					"objectClass": "InGameTimer",
+					"sid": 562997275097395
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 255390694820160,
+					"parameters": {
+						"object-to-create": "InGameText",
+						"layer": "0",
+						"x": "250",
+						"y": "224",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-horizontal-alignment",
+					"objectClass": "InGameText",
+					"sid": 317237131802640,
+					"parameters": {
+						"horizontal-alignment": "center"
+					}
+				},
+				{
+					"id": "set-font-size",
+					"objectClass": "InGameText",
+					"sid": 179467097264796,
+					"parameters": {
+						"size-pt": "36"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "InGameText",
+					"sid": 986594068985396,
+					"parameters": {
+						"text": "\"Thanks for playing!\" & newline & \"Total Happiness: \" & Happiness"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 923621911776095,
+					"parameters": {
+						"time-scale": "0"
+					}
+				}
+			],
+			"sid": 673418128278568
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 572998168888282,
+					"parameters": {
+						"interval-seconds": "0.016"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "InGameTimer",
+					"sid": 219274837182806,
+					"parameters": {
+						"text": "\"Only \" & round(((gameLength - yearsAlive) - (gameTime / TimeScalar)) * 100) / 100 & \" years until you graduate!\""
+					}
+				}
+			],
+			"sid": 831469371049915
 		}
 	],
 	"sid": 744209914689337

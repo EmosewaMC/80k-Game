@@ -388,8 +388,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 3,
-						"y": -498,
+						"x": -17,
+						"y": -715,
 						"width": 2248,
 						"height": 907,
 						"originX": 0,
@@ -469,8 +469,8 @@
 						}
 					},
 					"world": {
-						"x": 160,
-						"y": 231,
+						"x": 1692,
+						"y": -626,
 						"width": 54,
 						"height": 60,
 						"originX": 0.5,
@@ -488,7 +488,7 @@
 				{
 					"type": "InGameText",
 					"properties": {
-						"text": "Money: 0\nHappiness: 0",
+						"text": "",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 12,
@@ -512,8 +512,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 0,
-						"y": 1,
+						"x": 1,
+						"y": 32,
 						"width": 579,
 						"height": 478,
 						"originX": 0,
@@ -576,6 +576,92 @@
 						"height": 100,
 						"originX": 0.5,
 						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "InGameTimer",
+					"properties": {
+						"text": "",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 19,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "character",
+						"initially-visible": true,
+						"origin": "top-left",
+						"read-aloud": false
+					},
+					"uid": 14,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 1,
+						"y": 1,
+						"width": 555,
+						"height": 146,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "QuickTutorial",
+					"properties": {
+						"text": "Your goal is to get as much happiness as possible!\n\nMoney can be exchanged for happiness through random events, but if you end with money it is left unconverted.\n\nAt set intervals, you can choose to gain happiness or money, money can allow you to do events and straight happiness is a small, but consistent boost.\n\nWhen you are ready, press any key to start!",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 14,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left",
+						"read-aloud": false
+					},
+					"uid": 15,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 11,
+						"y": 141,
+						"width": 545,
+						"height": 310,
+						"originX": 0,
+						"originY": 0,
 						"color": [
 							1,
 							1,
