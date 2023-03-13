@@ -86,8 +86,8 @@
 					"world": {
 						"x": 396,
 						"y": 1373,
-						"width": 200,
-						"height": 200,
+						"width": 90,
+						"height": 90,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -130,8 +130,8 @@
 					"world": {
 						"x": 867,
 						"y": 1374,
-						"width": 100,
-						"height": 100,
+						"width": 90,
+						"height": 90,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -364,7 +364,7 @@
 				{
 					"type": "Text",
 					"properties": {
-						"text": "Main player: https://www.innersloth.com/games/among-us/\nMoneybag: https://www.istockphoto.com/portfolio/KalebSilva?mediatype=illustration\nAirplane: https://www.vecteezy.com/members/artvndy\nDisco Globe: https://www.carstickers.com/products/marketplace/artist/shutterstock-derter/\nBench: https://www.freepik.com/author/pixeleart\nBackground: https://www.pexels.com/@gradienta/\nAll other art assets are ours and our own.\nAll Sounds from: https://www.mixkit.co\n",
+						"text": "Airplane: https://www.vecteezy.com/members/artvndy\nBackground: https://www.pexels.com/@gradienta/\nAll other art assets are ours and our own.\nAll Sounds from: https://www.mixkit.co\n",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 36.19999999999992,
@@ -388,10 +388,10 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": -17,
-						"y": -715,
-						"width": 2248,
-						"height": 907,
+						"x": 2,
+						"y": -292,
+						"width": 2270,
+						"height": 277,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -471,8 +471,8 @@
 					"world": {
 						"x": 1692,
 						"y": -626,
-						"width": 54,
-						"height": 60,
+						"width": 25.16,
+						"height": 60.52,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -572,8 +572,8 @@
 					"world": {
 						"x": 447,
 						"y": 730,
-						"width": 100,
-						"height": 100,
+						"width": 60.52,
+						"height": 32.980000000000004,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
