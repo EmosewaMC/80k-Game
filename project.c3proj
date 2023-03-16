@@ -182,7 +182,16 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "DIN Alternate Bold.ttf",
+					"type": "application/font-sfnt",
+					"sid": 648537815383609,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {

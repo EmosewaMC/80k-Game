@@ -1528,9 +1528,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "InGameTimer",
-					"sid": 219274837182806,
+					"sid": 442513663570222,
 					"parameters": {
-						"text": "\"Only \" & round(((gameLength - yearsAlive) - (gameTime / TimeScalar)) * 100) / 100 & \" years until you graduate!\""
+						"text": "\"Only \" & round(((gameLength - yearsAlive) - (gameTime / TimeScalar)) * 100) / 100 & \" years until graduation!\""
 					}
 				}
 			],
