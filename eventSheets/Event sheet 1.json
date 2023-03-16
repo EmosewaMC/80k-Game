@@ -155,7 +155,7 @@
 			"eventType": "variable",
 			"name": "gameLength",
 			"type": "number",
-			"initialValue": "4",
+			"initialValue": "2",
 			"comment": "The games total length",
 			"isStatic": false,
 			"isConstant": false,
@@ -170,6 +170,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 623275561132737
+		},
+		{
+			"eventType": "variable",
+			"name": "GameEnded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "Whether the game has ended or not",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 229108741560224
 		},
 		{
 			"eventType": "block",
@@ -895,6 +905,11 @@
 					"parameters": {
 						"time-scale": "0"
 					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Text",
+					"sid": 259172780539322
 				}
 			],
 			"sid": 625022686554183
@@ -1411,6 +1426,15 @@
 						"comparison": 5,
 						"second-value": "gameLength"
 					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 833834273721831,
+					"parameters": {
+						"variable": "GameEnded"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [
@@ -1507,6 +1531,28 @@
 					"sid": 923621911776095,
 					"parameters": {
 						"time-scale": "0"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 306232460036014,
+					"parameters": {
+						"object-to-create": "Text",
+						"layer": "0",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 652660572721666,
+					"parameters": {
+						"variable": "GameEnded",
+						"value": "true"
 					}
 				}
 			],
