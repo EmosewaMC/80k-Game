@@ -155,7 +155,7 @@
 			"eventType": "variable",
 			"name": "gameLength",
 			"type": "number",
-			"initialValue": "3",
+			"initialValue": "4",
 			"comment": "The games total length",
 			"isStatic": false,
 			"isConstant": false,
